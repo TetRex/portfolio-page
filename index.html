@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+    <button id="theme-toggle">Toggle Theme</button>
+  </header>
+
+  <main>
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-grid">
+        <li class="skill-card">HTML</li>
+        <li class="skill-card">CSS</li>
+        <li class="skill-card">JavaScript</li>
+        <li class="skill-card">Python</li>
+        <li class="skill-card">IoT</li>
+        <li class="skill-card">LTspice</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>LangSwitcher</h3>
+          <p>A lightweight macOS app that automatically corrects keyboard layout mistakes when typing Cyrillic text on an English QWERTY keyboard, using macOS spell-check dictionaries for intelligent validation.</p>
+          <a href="https://github.com/TetRex/LangSwitcher">View on GitHub</a>
+        </article>
+        <article class="project-card">
+          <h3>VaultPensieve</h3>
+          <p>An Obsidian plugin that lets you chat with Claude or a local Ollama model in a sidebar, run writing commands on your notes, and let the AI read and modify your vault through tool calling.</p>
+          <a href="https://github.com/TetRex/VaultPensieve">View on GitHub</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Last updated: <span id="last-updated"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
