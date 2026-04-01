@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Weather App</h1>
+    <nav>
+      <a href="index.html">Portfolio</a>
+      <button id="theme-toggle">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="weather">
+      <h2>Select a City</h2>
+      <div class="city-buttons">
+        <button class="city-btn" data-lat="62.8924" data-lon="27.6770" data-city="Kuopio">Kuopio</button>
+        <button class="city-btn" data-lat="60.1699" data-lon="24.9384" data-city="Helsinki">Helsinki</button>
+        <button class="city-btn" data-lat="61.4978" data-lon="23.7610" data-city="Tampere">Tampere</button>
+        <button class="city-btn" data-lat="65.0121" data-lon="25.4651" data-city="Oulu">Oulu</button>
+      </div>
+
+      <div id="weatherBox" class="weather-box">
+        <p>City: <span id="city">—</span></p>
+        <p>Temperature: <span id="temperature">—</span> °C</p>
+        <p>Wind Speed: <span id="wind">—</span> km/h</p>
+      </div>
+
+      <h2>Debug Log</h2>
+      <pre id="output"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Weather data from <a href="https://open-meteo.com/">Open-Meteo</a></p>
+  </footer>
+
+  <script src="weather.js"></script>
+</body>
+</html>
