@@ -134,6 +134,46 @@ body.dark .project-card a {
   color: #60a5fa;
 }
 
+/* External Data Demo */
+#load-data {
+  padding: 0.5rem 1rem;
+  border: 2px solid #1a1a1a;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+body.dark #load-data {
+  border-color: #e0e0e0;
+}
+
+#data-result {
+  padding: 1rem;
+  min-height: 1.5rem;
+}
+
+#data-result dl {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1rem;
+}
+
+body.dark #data-result dl {
+  background: #1e1e1e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#data-result dt {
+  font-weight: 600;
+}
+
 /* Footer */
 footer {
   text-align: center;
