@@ -13,6 +13,69 @@
     localStorage.setItem("portfolio_theme", isDark ? "dark" : "light");
   });
 
+  const projectsGrid = document.querySelector(".projects-grid");
+  const projectCards = Array.from(document.querySelectorAll(".project-card"));
+  const starEls = document.querySelectorAll(".project-stars");
+  const starCountFormatter = new Intl.NumberFormat("en-US");
+
+  projectCards.forEach((card, index) => {
+    card.dataset.originalOrder = String(index);
+  });
+
+  function sortProjectCards() {
+    if (!projectsGrid) return;
+
+    const sortedCards = [...projectCards].sort((a, b) => {
+      const aStars = Number(a.dataset.starCount);
+      const bStars = Number(b.dataset.starCount);
+      const aHasStars = Number.isFinite(aStars);
+      const bHasStars = Number.isFinite(bStars);
+
+      if (aHasStars && bHasStars && aStars !== bStars) {
+        return bStars - aStars;
+      }
+
+      if (aHasStars !== bHasStars) {
+        return aHasStars ? -1 : 1;
+      }
+
+      return Number(a.dataset.originalOrder) - Number(b.dataset.originalOrder);
+    });
+
+    sortedCards.forEach((card) => {
+      projectsGrid.appendChild(card);
+    });
+  }
+
+  async function loadGitHubStars() {
+    const requests = Array.from(starEls, async (starEl) => {
+      const repo = starEl.dataset.repo;
+      const card = starEl.closest(".project-card");
+
+      if (!repo) {
+        starEl.textContent = "Stars: —";
+        if (card) card.dataset.starCount = "";
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://api.github.com/repos/${repo}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (card) card.dataset.starCount = String(data.stargazers_count);
+        starEl.textContent = `Stars: ${starCountFormatter.format(data.stargazers_count)}`;
+      } catch {
+        if (card) card.dataset.starCount = "";
+        starEl.textContent = "Stars: unavailable";
+      }
+    });
+
+    await Promise.all(requests);
+    sortProjectCards();
+  }
+
+  loadGitHubStars();
+
   // External Data Demo
   const loadBtn = document.getElementById("load-data");
   const result = document.getElementById("data-result");
